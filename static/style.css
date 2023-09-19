@@ -1,0 +1,55 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+}
+#myCanvas{
+    margin-top: 50px;
+    background-color: lightyellow;
+}
+.buttons{
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center;
+}
+.btn{
+    padding: 5px 10px;
+    color: black;
+    border: none;
+    font-size: medium;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all .2s;
+    cursor: pointer;
+}
+.btn:hover{
+    scale: 1.1;
+
+}
+.icon{
+    margin-right: 6px;
+}
+#undo{
+    background-color: blue;
+}
+#undo:hover{
+    background-color: rgba(0, 0, 255, 0.7);
+}
+#reset{
+    background-color: red;
+}
+#reset:hover{
+    background-color: rgba(255, 0, 0, 0.7);
+}
+#save{
+    background-color: green;
+}
+#save:hover{
+    background-color: rgba(0, 128, 0, 0.7);
+}
+.mr{
+    margin-right: 15px;
+}
