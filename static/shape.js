@@ -37,9 +37,9 @@ class Shape{
                 this.paths[this.paths.length-1].push(
                     [ev.x-x, ev.y-y]
                 );
-            }
+            } 
         };
-        document.onmouseup=ev=>{
+        document.onmouseup=()=>{
             this.addingPoints=false;
         };
     };
