@@ -13,11 +13,3 @@ function animate(){
     shape.draw(ctx);
     requestAnimationFrame(animate);
 };
-
-
-function animate2(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    shape.update(canvas, undo, reset, save);
-    shape.draw(ctx);
-    requestAnimationFrame(animate);
-};

@@ -39,7 +39,7 @@ class Shape{
                 );
             } 
         };
-        document.onmouseup=()=>{
+        document.onmouseup=ev=>{
             this.addingPoints=false;
         };
     };
