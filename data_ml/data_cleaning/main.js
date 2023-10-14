@@ -4,26 +4,31 @@ const ctx = canvas.getContext("2d");
 canvas.width = canvas.height = 400;
 imgsToRemove = []
 
-function download_image(paths, name) {
+function create_image(paths, name) {
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     let shape = new Shape(paths);
     shape.draw(ctx);
     data = canvas.toDataURL('image/png');
     img = document.createElement('img');
-    img.addEventListener('click', () => {
-        if (!(name in imgsToRemove)) {
+    img.id = name;
+    img.addEventListener('click', (evt) => {
+        if (!(String(evt.target.id) in imgsToRemove)) {
             imgsToRemove.push(name);
-            this.classList.add("redimg");
+            evt.target.classList.add("redimg");
         } else {
-             imgsToRemove.push(name);
-             this.classList.add("redimg");
+             imgsToRemove = imgsToRemove.filter(item => item!=name)
+             evt.target.classList.remove("redimg");
         }
+        console.log(imgsToRemove);
     })
     img.src = data;
     container.appendChild(img)
 }
-download_image(car['1'], )
+
+for (i of Object.keys(car)) {
+    create_image(car[i],i)
+}
 
 
 
