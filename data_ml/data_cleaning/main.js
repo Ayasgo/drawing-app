@@ -1,15 +1,16 @@
-const canvas = document.getElementById("myCanvas");
+const canvas = document.createElement('canvas');
 const ctx = canvas.getContext("2d");
-canvas.width = canvas.height = 500;
-let shape = new Shape();
-const   undo = document.getElementById("undo"),
-        save = document.getElementById("save"),
-        reset = document.getElementById("reset");
+canvas.width = canvas.height = 400;
 
-animate();
-function animate(){
+function download_image(description, paths) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    shape.update(canvas, undo, reset, save);
+    let shape = new Shape(paths);
     shape.draw(ctx);
-    requestAnimationFrame(animate);
-};
+    data = canvas.toDataURL('image/png');
+    a = document.createElement('a');
+    a.src = data;
+    a.download = description + '.png';
+}
+
+
+
