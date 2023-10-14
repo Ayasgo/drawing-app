@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+.redimg{
+    border: 10px;
+    border-color: red;
+}
