@@ -13,7 +13,7 @@ function create_image(paths, name) {
     img = document.createElement('img');
     img.id = name;
     img.addEventListener('click', (evt) => {
-        if (!(String(evt.target.id) in imgsToRemove)) {
+        if (!imgsToRemove.includes(evt.target.id)) {
             imgsToRemove.push(name);
             evt.target.classList.add("redimg");
         } else {
@@ -26,11 +26,54 @@ function create_image(paths, name) {
     container.appendChild(img)
 }
 
-for (i of Object.keys(car)) {
+for (i of Object.keys(fish)) {
     create_image(car[i],i)
 }
 
 
 
 
-
+imgsToRemove_for_car = [
+  "70",
+  "82",
+  "88",
+  "100",
+  "106",
+  "110",
+  "170",
+  "201",
+  "225",
+  "242",
+  "246",
+  "285",
+  "308",
+  "338",
+  "385",
+  "399",
+  "403",
+  "422",
+  "428",
+  "430",
+  "442",
+  "449",
+  "461",
+  "462",
+  "477",
+  "501",
+  "576",
+  "582",
+  "601",
+  "614",
+  "608",
+  "609",
+  "616",
+  "619",
+  "620",
+  "656",
+  "657",
+  "653",
+  "670",
+  "676",
+  "673",
+  "697",
+];
