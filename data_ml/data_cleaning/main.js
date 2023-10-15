@@ -26,8 +26,9 @@ function create_image(paths, name) {
     container.appendChild(img)
 }
 
-for (i of Object.keys(fish)) {
-    create_image(car[i],i)
+classList = fish
+for (i of Object.keys(classList)) {
+  create_image(classList[i], i);
 }
 
 
@@ -76,4 +77,42 @@ imgsToRemove_for_car = [
   "676",
   "673",
   "697",
+];
+
+imgsToRemove_for_fish = (35)[
+  ("44",
+  "54",
+  "82",
+  "100",
+  "105",
+  "111",
+  "170",
+  "201",
+  "252",
+  "282",
+  "331",
+  "337",
+  "349",
+  "399",
+  "422",
+  "428",
+  "442",
+  "461",
+  "464",
+  "462",
+  "471",
+  "477",
+  "482",
+  "501",
+  "576",
+  "581",
+  "608",
+  "609",
+  "616",
+  "655",
+  "668",
+  "678",
+  "676",
+  "701",
+  "698")
 ];
