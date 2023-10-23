@@ -108,9 +108,10 @@ info = {
 }
 
 import pickle
-with (  open('model\model.pkl', 'rb') as modelf,
-        open('model\encoder.pkl', 'rb') as encoderf,
-        open('model\scaler.pkl', 'rb') as scalerf) :
+path = r'..\data_ml\model\\'
+with (  open(path + 'model.pkl', 'rb') as modelf,
+        open(path + 'encoder.pkl', 'rb') as encoderf,
+        open(path + 'scaler.pkl', 'rb') as scalerf) :
     
     model = pickle.load(modelf)
     encoder = pickle.load(encoderf)

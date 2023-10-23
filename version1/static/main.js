@@ -2,7 +2,8 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = canvas.height = 500;
 let shape = new Shape();
-const undo = document.getElementById("undo"),
+const textResponse = document.getElementById("response"),
+    undo = document.getElementById("undo"),
   save = document.getElementById("save"),
   reset = document.getElementById("reset"),
   predict = document.getElementById("predict");
@@ -15,16 +16,10 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-function loadButtonsEventListeners(undo, reset, save, predict) {
-  undo.onclick = () => {
-    if (this.paths) this.paths.pop();
-  };
-  reset.onclick = () => {
-    this.paths = [];
-  };
+function loadButtonsEventListeners(save, predict) {
   save.onclick = () => {
     let data = {
-      paths: this.paths,
+      paths: shape.paths,
     };
     $.ajax({
       url: "/",
@@ -42,7 +37,7 @@ function loadButtonsEventListeners(undo, reset, save, predict) {
   };
   predict.onclick = () => {
     let data = {
-      paths: this.paths,
+      paths: shape.paths,
     };
     $.ajax({
       url: "/predict",
@@ -51,7 +46,8 @@ function loadButtonsEventListeners(undo, reset, save, predict) {
       contentType: "application/json",
       data: JSON.stringify(data),
       success: function (response) {
-        console.log("success", response);
+        console.log("success", response.class);
+        textResponse.innerText = response.class;
       },
       error: function (xhr, status, error) {
         console.log("error", error);
@@ -60,4 +56,4 @@ function loadButtonsEventListeners(undo, reset, save, predict) {
   };
 }
 
-loadButtonsEventListeners(undo, reset, save, predict);
+loadButtonsEventListeners(save, predict);

@@ -5,8 +5,16 @@ body{
     display: flex;
     justify-content: center;
 }
+#response{
+    margin-top: 12px;
+    height: 34px;
+    font-size: 33px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: capitalize;
+}
 #myCanvas{
-    margin-top: 50px;
+    margin-top: 5px;
     background-color: lightyellow;
 }
 .buttons{
@@ -49,6 +57,12 @@ body{
 }
 #save:hover{
     background-color: rgba(0, 128, 0, 0.7);
+}
+#predict{
+    background-color: yellow;
+}
+#predict:hover{
+    background-color: rgba(255, 255, 0, 0.7);
 }
 .mr{
     margin-right: 15px;
