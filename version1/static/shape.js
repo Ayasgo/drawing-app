@@ -7,7 +7,6 @@ class Shape{
 
     update(canvas, undo, reset, save){
         this.#addCanvasEventListeners(canvas);
-        this.#addButtonsEventListeners(undo, reset, save);
     }
 
     draw(ctx){
@@ -44,30 +43,4 @@ class Shape{
         };
     };
 
-    #addButtonsEventListeners(undo, reset, save){
-        undo.onclick=()=>{
-            if(this.paths) this.paths.pop();
-        };
-        reset.onclick=()=>{
-            this.paths = [];
-        };
-        save.onclick=()=>{
-            let data = {
-                'paths': this.paths
-            };
-            $.ajax({
-                'url': '/',
-                'method': 'post',
-                'dataType': 'json',
-                'contentType': 'application/json',
-                'data': JSON.stringify(data),
-                'success': function(){
-                    console.log('success');
-                },
-                'error': function(xhr, status, error){
-                    console.log('error', error);
-                }
-            });
-        };
-    };
 };

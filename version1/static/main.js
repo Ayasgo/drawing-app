@@ -2,14 +2,62 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = canvas.height = 500;
 let shape = new Shape();
-const   undo = document.getElementById("undo"),
-        save = document.getElementById("save"),
-        reset = document.getElementById("reset");
+const undo = document.getElementById("undo"),
+  save = document.getElementById("save"),
+  reset = document.getElementById("reset"),
+  predict = document.getElementById("predict");
 
 animate();
-function animate(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    shape.update(canvas, undo, reset, save);
-    shape.draw(ctx);
-    requestAnimationFrame(animate);
-};
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  shape.update(canvas, undo, reset, save);
+  shape.draw(ctx);
+  requestAnimationFrame(animate);
+}
+
+function loadButtonsEventListeners(undo, reset, save, predict) {
+  undo.onclick = () => {
+    if (this.paths) this.paths.pop();
+  };
+  reset.onclick = () => {
+    this.paths = [];
+  };
+  save.onclick = () => {
+    let data = {
+      paths: this.paths,
+    };
+    $.ajax({
+      url: "/",
+      method: "post",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(data),
+      success: function () {
+        console.log("success");
+      },
+      error: function (xhr, status, error) {
+        console.log("error", error);
+      },
+    });
+  };
+  predict.onclick = () => {
+    let data = {
+      paths: this.paths,
+    };
+    $.ajax({
+      url: "/predict",
+      method: "post",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(data),
+      success: function (response) {
+        console.log("success", response);
+      },
+      error: function (xhr, status, error) {
+        console.log("error", error);
+      },
+    });
+  };
+}
+
+loadButtonsEventListeners(undo, reset, save, predict);
