@@ -26,7 +26,7 @@ function create_image(paths, name) {
     container.appendChild(img)
 }
 
-classList = tree
+classList = fish
 for (i of Object.keys(classList)) {
   create_image(classList[i], i);
 }
