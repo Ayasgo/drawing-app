@@ -1,6 +1,8 @@
-body{
+*{
     margin: 0px;
     padding: 0px;
+}
+body{
     background-color: lightblue;
     display: flex;
     justify-content: center;
@@ -66,4 +68,16 @@ body{
 }
 .mr{
     margin-right: 15px;
+}
+.options{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px 0px;
+    font-size: medium;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.option-container{
+    display: flex;
+    gap: 5px;
 }
