@@ -1,9 +1,14 @@
 const canvas = document.getElementById("myCanvas");
+const options = {
+                  simple: document.getElementById('simple'),
+                  colordPaths : document.getElementById('colordPaths'),
+                  points : document.getElementById('points')
+                };
 const ctx = canvas.getContext("2d");
 canvas.width = canvas.height = 500;
 let shape = new Shape();
 const textResponse = document.getElementById("response"),
-    undo = document.getElementById("undo"),
+  undo = document.getElementById("undo"),
   save = document.getElementById("save"),
   reset = document.getElementById("reset"),
   predict = document.getElementById("predict");
