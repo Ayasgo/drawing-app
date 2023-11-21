@@ -7,7 +7,7 @@ class Shape{
 
     update(canvas, undo, reset, save){
         this.#addCanvasEventListeners(canvas);
-        this.#addButtonsEventListeners(undo, reset);
+        this.#addButtonsEventListeners(undo, reset, save);
     }
 
     draw(ctx){
@@ -37,7 +37,6 @@ class Shape{
                 this.paths[this.paths.length-1].push(
                     [ev.x-x, ev.y-y]
                 );
-                textResponse.innerText = '';
             } 
         };
         document.onmouseup=ev=>{
@@ -45,14 +44,30 @@ class Shape{
         };
     };
 
-    #addButtonsEventListeners(undo, reset){
+    #addButtonsEventListeners(undo, reset, save){
         undo.onclick=()=>{
             if(this.paths) this.paths.pop();
-            textResponse.innerText = '';
         };
         reset.onclick=()=>{
             this.paths = [];
-            textResponse.innerText = '';
+        };
+        save.onclick=()=>{
+            let data = {
+                'paths': this.paths
+            };
+            $.ajax({
+                'url': '/',
+                'method': 'post',
+                'dataType': 'json',
+                'contentType': 'application/json',
+                'data': JSON.stringify(data),
+                'success': function(){
+                    console.log('success');
+                },
+                'error': function(xhr, status, error){
+                    console.log('error', error);
+                }
+            });
         };
     };
 };
