@@ -2,6 +2,7 @@ class Shape {
   constructor(color = "black") {
     this.color = color;
     this.paths = [];
+    this.colors = [];
     this.addingPoints = false;
   }
 
@@ -10,12 +11,20 @@ class Shape {
     this.#addButtonsEventListeners(undo, reset);
   }
 
-  draw(ctx, coloredPaths = true, pointedPaths = false) {
+  draw(ctx, coloredPaths = false, pointedPaths = true) {
     if (!this.paths) return;
 
+    while (this.colors.length != this.paths.length) {
+      if (this.paths.length > this.colors.length) {
+        this.colors.push(getRandomColor())
+      } else if (this.paths.length < this.colors.length) {
+        this.colors.pop();
+      }
+
+    }
     if (coloredPaths) {
-      this.paths.forEach((path) => {
-        ctx.strokeStyle = getRandomColor();
+      this.paths.forEach((path, index) => {
+        ctx.strokeStyle = this.colors[index];
         ctx.beginPath();
         ctx.moveTo(...path[0]);
         path.slice(1).forEach((point) => {
@@ -24,6 +33,14 @@ class Shape {
         ctx.stroke();
       });
     } else if (pointedPaths) {
+      ctx.strokeStyle = this.color;
+      this.paths.forEach((path) => {
+        ctx.beginPath();
+        path.forEach((point) => {
+          ctx.arc(...point, 1, 0, 2 * Math.PI);
+        });
+        ctx.stroke();
+      });
     } else {
       ctx.strokeStyle = this.color;
       this.paths.forEach((path) => {
@@ -43,7 +60,7 @@ class Shape {
       this.addingPoints = true;
       let path = [];
       path.push([ev.x - x, ev.y - y]);
-      this.paths.push(path);
+        this.paths.push(path);
     };
     canvas.onmousemove = (ev) => {
       if (this.addingPoints) {
@@ -58,7 +75,9 @@ class Shape {
 
   #addButtonsEventListeners(undo, reset) {
     undo.onclick = () => {
-      if (this.paths) this.paths.pop();
+        if (this.paths) {
+            this.paths.pop();
+        };
       textResponse.innerText = "";
     };
     reset.onclick = () => {
