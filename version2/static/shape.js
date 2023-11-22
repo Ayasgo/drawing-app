@@ -11,7 +11,7 @@ class Shape {
     this.#addButtonsEventListeners(undo, reset);
   }
 
-  draw(ctx, coloredPaths = false, pointedPaths = true) {
+  draw(ctx, coloredPaths = true, pointedPaths = true, r=1.5) {
     if (!this.paths) return;
 
     while (this.colors.length != this.paths.length) {
@@ -32,26 +32,18 @@ class Shape {
         });
         ctx.stroke();
       });
-    } else if (pointedPaths) {
+    }
+    if (pointedPaths) {
       ctx.strokeStyle = this.color;
       this.paths.forEach((path) => {
         ctx.beginPath();
         path.forEach((point) => {
-          ctx.arc(...point, 1, 0, 2 * Math.PI);
+          ctx.moveTo(...point)
+          ctx.arc(...point, r, 0, 2 * Math.PI);
         });
-        ctx.stroke();
+        ctx.fill();
       });
-    } else {
-      ctx.strokeStyle = this.color;
-      this.paths.forEach((path) => {
-        ctx.beginPath();
-        ctx.moveTo(...path[0]);
-        path.slice(1).forEach((point) => {
-          ctx.lineTo(...point);
-        });
-        ctx.stroke();
-      });
-    }
+    } 
   }
 
   #addCanvasEventListeners(canvas) {

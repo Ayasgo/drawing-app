@@ -1,9 +1,8 @@
 const canvas = document.getElementById("myCanvas");
 const options = {
-                  simple: document.getElementById('simple'),
-                  colordPaths : document.getElementById('colordPaths'),
-                  points : document.getElementById('points')
-                };
+  colordPaths: document.getElementById("colordPaths"),
+  pointedPaths: document.getElementById("pointedPaths"),
+};
 const ctx = canvas.getContext("2d");
 canvas.width = canvas.height = 500;
 let shape = new Shape();
@@ -71,11 +70,11 @@ function optionsEventListeners(){
   for( const option in options) {
     opt = options[option];    
     opt.addEventListener('change', function(){
-      uncheckedOptions();
-      this.parentNode.classList.remove('unchecked');
-      console.log(11)
+      if (this.checked) this.parentNode.classList.remove('unchecked');
+      else this.parentNode.classList.add("unchecked");
     });
   }
 }
 loadButtonsEventListeners(save, predict);
+uncheckedOptions()
 optionsEventListeners()
