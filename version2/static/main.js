@@ -1,8 +1,13 @@
 const canvas = document.getElementById("myCanvas");
 const options = {
-  colordPaths: document.getElementById("colordPaths"),
-  pointedPaths: document.getElementById("pointedPaths"),
   linkedPaths: document.getElementById("linkedPaths"),
+  pointedPaths: document.getElementById("pointedPaths"),
+  coloredPaths: document.getElementById("coloredPaths"),
+};
+const drawingOptions = {
+  linkedPaths: true,
+  pointedPaths: false,
+  coloredPaths: false,
 };
 const ctx = canvas.getContext("2d");
 canvas.width = canvas.height = 500;
@@ -17,7 +22,7 @@ animate();
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   shape.update(canvas, undo, reset, save);
-  shape.draw(ctx);
+  shape.draw(ctx, drawingOptions);
   requestAnimationFrame(animate);
 }
 
@@ -61,21 +66,33 @@ function loadButtonsEventListeners(save, predict) {
   };
 }
 
-uncheckedOptions = ()=>{
-  for( const option in options){
-   options[option].parentNode.classList.add('unchecked');
+uncheckedOptions = () => {
+  for (const option in options) {
+    if (drawingOptions[option]) {
+      opt = options[option];
+      console.log(option)
+      opt.parentNode.classList.remove("unchecked");
+      opt.checked = true;
+    } else {
+      options[option].parentNode.classList.add("unchecked");
+    }
   }
-}
+};
 
-function optionsEventListeners(){
-  for( const option in options) {
-    opt = options[option];    
-    opt.addEventListener('change', function(){
-      if (this.checked) this.parentNode.classList.remove('unchecked');
-      else this.parentNode.classList.add("unchecked");
+function optionsEventListeners() {
+  for (const option in options) {
+    opt = options[option];
+    opt.addEventListener("change", function () {
+      if (this.checked) {
+        this.parentNode.classList.remove("unchecked");
+        drawingOptions[this.id] = true;
+      } else {
+        this.parentNode.classList.add("unchecked");
+        drawingOptions[this.id] = false;
+      };
     });
   }
 }
 loadButtonsEventListeners(save, predict);
-uncheckedOptions()
-optionsEventListeners()
+uncheckedOptions();
+optionsEventListeners();

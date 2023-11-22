@@ -11,7 +11,7 @@ class Shape {
     this.#addButtonsEventListeners(undo, reset);
   }
 
-  draw(ctx, linkedPaths = 0, coloredPaths = 1, pointedPaths = true, r = 1.5) {
+  draw(ctx, {linkedPaths = true, coloredPaths = false, pointedPaths = false, r = 1.5}) {
     if (!this.paths) return;
 
     while (this.colors.length != this.paths.length) {
