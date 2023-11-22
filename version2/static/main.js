@@ -2,6 +2,7 @@ const canvas = document.getElementById("myCanvas");
 const options = {
   colordPaths: document.getElementById("colordPaths"),
   pointedPaths: document.getElementById("pointedPaths"),
+  linkedPaths: document.getElementById("linkedPaths"),
 };
 const ctx = canvas.getContext("2d");
 canvas.width = canvas.height = 500;
