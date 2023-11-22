@@ -9,10 +9,21 @@ class Shape{
         this.#addCanvasEventListeners(canvas);
         this.#addButtonsEventListeners(undo, reset);
     }
-
-    draw(ctx){
+    
+    draw(ctx, coloredPaths = false, pointedPath = false){
         if(! this.paths) return;
 
+        if( coloredPaths){
+            ctx.styleStroke = this.color;
+            this.paths.forEach(path=>{
+                ctx.beginPath();
+                ctx.moveTo(...path[0]);
+                path.slice(1).forEach(point=>{
+                    ctx.lineTo(...point);
+                })
+                ctx.stroke();
+            }) 
+        }
         ctx.styleStroke = this.color;
         this.paths.forEach(path=>{
             ctx.beginPath();
