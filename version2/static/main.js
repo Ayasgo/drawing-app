@@ -61,4 +61,21 @@ function loadButtonsEventListeners(save, predict) {
   };
 }
 
+uncheckedOptions = ()=>{
+  for( const option in options){
+   options[option].parentNode.classList.add('unchecked');
+  }
+}
+
+function optionsEventListeners(){
+  for( const option in options) {
+    opt = options[option];    
+    opt.addEventListener('change', function(){
+      uncheckedOptions();
+      this.parentNode.classList.remove('unchecked');
+      console.log(11)
+    });
+  }
+}
 loadButtonsEventListeners(save, predict);
+optionsEventListeners()
