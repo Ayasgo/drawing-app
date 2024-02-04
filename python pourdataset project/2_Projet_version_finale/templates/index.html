@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drawing app</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='plugins/fontawesome-all.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="response"></div>
+      <canvas id="myCanvas"></canvas>
+      <div class="options">
+        <div class="option-container"><input type="checkbox" id="linkedPaths">Linked paths</div>
+        <div class="option-container"><input type="checkbox" id="pointedPaths">Pointed paths</div>
+        <div class="option-container"><input type="checkbox" id="coloredPaths"> Colored paths</div>
+      </div>
+      <div class="buttons">
+        <button id="reset" class="btn mr">
+          <i class="icon fa-solid fa-trash-can-arrow-up"></i>Reset
+        </button>
+        <button id="undo" class="btn mr">
+          <i class="icon fa-solid fa-arrow-rotate-left"></i>Undo
+        </button>
+        <button id="save" class="btn mr">
+          <i class="icon fa-solid fa-floppy-disk"></i>Save
+        </button>
+        <button id="predict" class="btn">
+          <i class="icon fa-solid fa-circle-question"></i>Predict
+        </button>
+      </div>
+    </div>
+
+    <script src="{{url_for('static',filename='plugins/fontawesome-all.min.js') }}"></script>
+    <script src="{{url_for('static',filename='plugins/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{url_for('static',filename='utils.js') }}"></script>
+    <script src="{{url_for('static',filename='shape.js') }}"></script>
+    <script src="{{url_for('static',filename='main.js') }}"></script>
+  </body>
+</html>

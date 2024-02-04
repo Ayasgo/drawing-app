@@ -1,0 +1,11 @@
+
+img{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+.redimg{
+        opacity: 0.5;
+        border: 5px solid red;
+        border-radius: 5px;
+}
