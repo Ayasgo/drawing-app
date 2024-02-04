@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drawing app</title>
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+}
+#response{
+    margin-top: 12px;
+    height: 34px;
+    font-size: 33px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+#myCanvas{
+    margin-top: 5px;
+    background-color: lightyellow;
+}
+.buttons{
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center;
+}
+.btn{
+    padding: 5px 10px;
+    color: black;
+    border: none;
+    font-size: medium;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all .2s;
+    cursor: pointer;
+}
+.btn:hover{
+    scale: 1.1;
+
+}
+.icon{
+    margin-right: 6px;
+}
+#undo{
+    background-color: blue;
+}
+#undo:hover{
+    background-color: rgba(0, 0, 255, 0.7);
+}
+#reset{
+    background-color: red;
+}
+#reset:hover{
+    background-color: rgba(255, 0, 0, 0.7);
+}
+#save{
+    background-color: green;
+}
+#save:hover{
+    background-color: rgba(0, 128, 0, 0.7);
+}
+#predict{
+    background-color: yellow;
+}
+#predict:hover{
+    background-color: rgba(255, 255, 0, 0.7);
+}
+.mr{
+    margin-right: 15px;
+}
+.options{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: medium;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.option-container{
+    display: flex;
+    gap: 5px;
+}
+.unchecked{
+    color: gray;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="response"></div>
+      <canvas id="myCanvas"></canvas>
+      <div class="options">
+        <div class="option-container"><input type="checkbox" id="linkedPaths">Linked paths</div>
+        <div class="option-container"><input type="checkbox" id="pointedPaths">Pointed paths</div>
+        <div class="option-container"><input type="checkbox" id="coloredPaths"> Colored paths</div>
+      </div>
+      <div class="buttons">
+        <button id="reset" class="btn mr">
+          <i class="icon fa-solid fa-trash-can-arrow-up"></i>Reset
+        </button>
+        <button id="undo" class="btn mr">
+          <i class="icon fa-solid fa-arrow-rotate-left"></i>Undo
+        </button>
+        <button id="save" class="btn mr">
+          <i class="icon fa-solid fa-floppy-disk"></i>Save
+        </button>
+        <button id="predict" class="btn">
+          <i class="icon fa-solid fa-circle-question"></i>Predict
+        </button>
+      </div>
+    </div>
+
+    <script src="{{url_for('static',filename='plugins/fontawesome-all.min.js') }}"></script>
+    <script src="{{url_for('static',filename='plugins/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{url_for('static',filename='utils.js') }}"></script>
+    <script src="{{url_for('static',filename='shape.js') }}"></script>
+    <script src="{{url_for('static',filename='main.js') }}"></script>
+  </body>
+</html>
