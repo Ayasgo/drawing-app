@@ -108,7 +108,7 @@ info = {
 }
 
 import pickle
-path = r'..\data_ml\model\\'
+path = r'model\\'
 with (  open(path + 'model.pkl', 'rb') as modelf,
         open(path + 'encoder.pkl', 'rb') as encoderf,
         open(path + 'scaler.pkl', 'rb') as scalerf) :
@@ -137,6 +137,3 @@ def predict(paths):
     data = data.reshape((1,-1))
     data = preprocessing(data)
     return get_class(data)
-
-
-
